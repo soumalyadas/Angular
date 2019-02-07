@@ -1,0 +1,61 @@
+<div class="panel-body"  >
+          <div class="container" >
+          <div class="col-xs-12">              
+               <table class="table table-condensed">
+                     <tr class="info">
+                     <th>Employee Name :</th>
+                     <th > <input type="text" class="form-control" id="usr" [(ngModel)]="emp.name"></th>
+                    </tr>
+
+                     <tr class="info">
+                     <th>Sex :</th>
+                     <th ><select class="form-control" id="usr" [(ngModel)]="emp.gender">  
+                          <option value="1">Male</option>
+                          <option value="2">Female</option>  
+                          </select>  
+                     </th>
+                    </tr>
+
+                     <tr class="info">
+                     <th>Contact Preference :</th>
+                     <th ><select class="form-control" id="usr" [(ngModel)]="emp.contactPreference">  
+                          <option value="1">Email</option>
+                          <option value="2">Mobile</option>  
+                          </select>  
+                     </th>
+                    </tr>
+                     <tr class="info" *ngIf='emp.contactPreference == 1'>
+                     <th>Email :</th>
+                     <th ><input type="text" class="form-control" id="usr" [(ngModel)]="emp.email"></th>
+                    </tr>
+                     <tr class="info" *ngIf='emp.contactPreference == 2'>
+                     <th>Mobile :</th>
+                     <th ><input type="text" class="form-control" id="usr" [(ngModel)]="emp.phn"></th>
+                    </tr>
+                     <tr class="info">
+                     <th>DOB :</th>
+                     <th >
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="picker" placeholder="Choose Your DOB"[(ngModel)]="emp.DOB" >
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                     </th>
+                    </tr>
+                     <tr class="info">
+                     <th>Department :</th>
+                     <th >
+                        <select class="form-control" id="usr" [(ngModel)]="emp.deptId">  
+                         <option value="0">--Select dept--</option>  
+                        <option *ngFor="let dept of departments " value={{dept.deptId}}>{{dept.deptnName}}</option>  
+                        </select>
+                     </th>
+                    </tr>
+             </table>
+             <button class="btn btn-success" (click)="FnSaveEmp()">Save</button>
+             &nbsp;<button class="btn btn-info" (click)="FnBackEmp()">Back to Employee List</button>
+          </div>
+  
+</div>
+
+        </div>
