@@ -1,0 +1,19 @@
+.trcls{
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-weight: lighter;
+    color: darkmagenta
+}
+.dotred {
+  height: 12px;
+  width: 12px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dotgreen {
+  height: 12px;
+  width: 12px;
+  background-color:greenyellow;
+  border-radius: 50%;
+  display: inline-block;
+}
