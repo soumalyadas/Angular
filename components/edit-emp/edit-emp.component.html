@@ -1,0 +1,77 @@
+<div class="panel-body"  >
+          <div class="container" *ngIf="employee">
+          <div class="row col-xs-12">
+          <div class="col-xs-3">
+            <img src="assets\images\Emp{{employee.id}}.png"  height="250" width="200">
+          </div>
+          <div class="col-xs-9">              
+               <table class="table table-condensed">
+                    <tr class="info">
+                     <th>Employee ID :</th>
+                     <th >{{employee.id}}</th>
+                    </tr>
+                     <tr class="info">
+                     <th>Employee Name :</th>
+                     <th > <input type="text" class="form-control" id="usr" [(ngModel)]="employee.name"></th>
+                    </tr>
+
+                     <tr class="info">
+                     <th>Sex :</th>
+                     <th ><select class="form-control" id="usr" [(ngModel)]="employee.gender">  
+                          <option value="1">Male</option>
+                          <option value="2">Female</option>  
+                          </select>  
+                     </th>
+                    </tr>
+
+                     <tr class="info">
+                     <th>Contact Preference :</th>
+                     <th ><select class="form-control" id="usr" [(ngModel)]="employee.contactPreference">  
+                          <option value="1">Email</option>
+                          <option value="2">Mobile</option>  
+                          </select>  
+                     </th>
+                    </tr>
+                     <tr class="info" *ngIf='employee.contactPreference == 1'>
+                     <th>Email :</th>
+                     <th ><input type="text" class="form-control" id="usr" [(ngModel)]="employee.email"></th>
+                    </tr>
+                     <tr class="info" *ngIf='employee.contactPreference == 2'>
+                     <th>Mobile :</th>
+                     <th ><input type="text" class="form-control" id="usr" [(ngModel)]="employee.phn"></th>
+                    </tr>
+                     <tr class="info">
+                     <th>DOB :</th>
+                     <th >
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="picker" placeholder="Choose Your DOB"[(ngModel)]="employee.DOB" >
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                     </th>
+                    </tr>
+                     <tr class="info">
+                     <th>Department :</th>
+                     <th >
+                        <select class="form-control" id="usr" [(ngModel)]="employee.deptId">  
+                         <option value="0">--Select dept--</option>  
+                        <option *ngFor="let dept of departments " value={{dept.deptId}}>{{dept.deptnName}}</option>  
+                        </select>
+                     </th>
+                    </tr>
+                    <tr class="info">
+                     <th>Status :</th>
+                     <th>
+                      <mat-checkbox [(ngModel)]="employee.isActive"></mat-checkbox>
+                       </th>
+                    </tr>
+             </table>
+             <button class="btn btn-success" (click)="FnSaveEmp()">Save</button>
+          </div>
+    </div>
+</div>
+<div *ngIf="!employee">
+<h2 style="color: red">This emp id({{empid}}) does not exists</h2>
+</div>
+<button class="btn btn-info" (click)="FnBackEmp()">Back to Employee List</button>
+        </div>
