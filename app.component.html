@@ -1,0 +1,23 @@
+<div style="padding:5px">
+        <ul class="nav nav-pills">
+            <li routerLinkActive="active" *ngIf="!auth.isLoggednIn()">
+                <a routerLink="Login">Login</a>
+            </li>
+            <li routerLinkActive="active" *ngIf="!auth.isLoggednIn()">
+                <a routerLink="Registration">Registration</a>
+            </li>
+            <li routerLinkActive="active"  *ngIf="auth.isLoggednIn()">
+                <a routerLink="Emplist">Employee List</a>
+            </li>
+             <li routerLinkActive="active"  *ngIf="auth.isLoggednIn()">
+                <a routerLink="AddEmp">Add Employee</a>
+            </li>
+        </ul>
+        <br/>
+        <div *ngIf="auth.isLoggednIn()">
+            <h2> Welcome {{auth.getUserName()}}</h2>
+         <button class="btn btn-danger"  (click)="auth.logout()">Logout</button>
+        </div>
+       
+        <router-outlet></router-outlet>
+</div>
